@@ -1,6 +1,12 @@
 version: "3.8"
 services: 
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: nginx_svc
+    restart: always
     ports: 
       - 8080:80
+    volumes:
+      - ./html/:/usr/share/nginx/html
